@@ -5,7 +5,7 @@
     height: 50rem;
     border: 1px solid black;
     top: 2rem;
-    left: 25%;
+    left: 30%;
     justify-content: center;
     align-items: center;
     background-color: rgb(54, 54, 54);
@@ -88,7 +88,7 @@
     margin-bottom: 10px;
 }
 
-.start_game_btn{
+.start_game_btn, .start_game_btn:active{
     height: 2.5rem; 
     width: 15rem;
     border: 1px solid gray;
@@ -98,3 +98,14 @@
     font-size: larger;
     font-weight: bold;
 }
+
+.start_game_btn:hover {
+    color: white;
+    background-color: rgb(54, 54, 54);
+}
+
+.start_game_btn:active{
+   color:rgb(54, 54, 54);
+   background-color: white;
+}
+
