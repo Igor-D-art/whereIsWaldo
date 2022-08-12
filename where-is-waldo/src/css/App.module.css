@@ -1,0 +1,10 @@
+:global .redColorText{
+  color: red;
+}
+
+.boldRedText{
+  /* composes: redColorText;  */
+  font-weight: bold;
+  font-size: xx-large;
+}
+
