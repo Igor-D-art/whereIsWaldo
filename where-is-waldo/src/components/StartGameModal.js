@@ -4,6 +4,8 @@ import downloadImage from '../utils/imageDownloader';
 
 function StartGameModal({display, locations, characters, selectLocation}) {
 
+  
+
   return (
     <div className={styles.start_container}>
       <ul className={styles.start_loc_options}> 

@@ -31,17 +31,20 @@ function App() {
   const selectLocation = (e)=>{
     setTargetLocation(locations[e.target.id])
     setIsGameStart(false);
+    const targetChars = characters.filter((character)=>character.location === 'CyberPunk Hotel')
+    setTargetCharacters(targetChars);
     console.log (`you selected location ${e.target.id}`)
   }
 
   return (
     <div className="App">
       <Header/>
-      <GamePlay locations = {targetLocation} characters = {targetCharacters}/>
       {isGameStart? <StartGameModal  
                                     locations = {locations} 
                                     characters = {characters} 
-                                    selectLocation = {selectLocation}/> : null}
+                                    selectLocation = {selectLocation}/> : <GamePlay 
+                                                                            location = {targetLocation} 
+                                                                            characters = {targetCharacters}/>}
       {isGameOver? <EndGameModal display = {setIsGameOver}/> : null}
     </div>
   );

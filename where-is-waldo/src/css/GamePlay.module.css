@@ -1,0 +1,10 @@
+.gp_container{
+    display: block;
+    height: 100vh;
+    width: auto;
+}
+
+.gp_image{
+    width: 100%;
+    height: auto;
+}
