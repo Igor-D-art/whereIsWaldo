@@ -1,0 +1,47 @@
+.header{
+    display: flex;
+    position: fixed;
+    height: 6rem;
+    width: 100%;
+    background-color: rgb(34, 34, 34);
+    border-bottom: 1px solid black;
+    z-index: 1;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logo, .timer, .charStub{
+    font-size: xx-large;
+    font-weight: bold;
+    color: rgb(187, 255, 0);
+}
+
+.timer{
+    display: flex;
+    width: 10rem;
+    justify-content: center;
+}
+
+.charStub{
+    width: 225px;
+}
+
+.image_container{
+    height: 80%;
+    width: fit-content;
+}
+
+.image_container img{
+    height: 100%;
+    width: auto;
+    margin: 0 15px 0 15px;
+}
+
+ul{
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    justify-content: space-between;
+}

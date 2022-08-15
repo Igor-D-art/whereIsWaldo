@@ -21,6 +21,8 @@ function App() {
   const [targetLocation, setTargetLocation] = useState('');
   const [targetCharacters, setTargetCharacters] = useState([]);
 
+  const [timeLoaded, setTimeLoaded] = useState('')
+
   useEffect(()=>{
     const initLocations = locationsSetup;
     const initCharacters = charactersSetup;
@@ -29,16 +31,19 @@ function App() {
   },[])
 
   const selectLocation = (e)=>{
-    setTargetLocation(locations[e.target.id])
+    const targetLoc = locations[e.target.id];
+    setTargetLocation(targetLoc);
     setIsGameStart(false);
-    const targetChars = characters.filter((character)=>character.location === 'CyberPunk Hotel')
+    const targetChars = characters.filter((character)=>character.location === locations[e.target.id].name)
     setTargetCharacters(targetChars);
-    console.log (`you selected location ${e.target.id}`)
+    const timeLoad = new Date().getTime();
+    setTimeLoaded(timeLoad);
   }
 
   return (
-    <div className="App">
-      <Header/>
+    <div className={styles.app}>
+      <Header characters={targetCharacters}
+              time={timeLoaded}/>
       {isGameStart? <StartGameModal  
                                     locations = {locations} 
                                     characters = {characters} 
