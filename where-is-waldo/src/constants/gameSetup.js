@@ -1,7 +1,7 @@
 
 export const locationsSetup = [
     {
-        name: 'CyberPunk Hotel', 
+        name: 'Cyber Punk Hotel', 
         lightImageUrl: 'images/Location1_light.png',
         imageUrl: 'images/Location1.jpg', 
         isActive: false,
@@ -10,21 +10,21 @@ export const locationsSetup = [
   
 export const charactersSetup = [
     {
-        location: 'CyberPunk Hotel', 
+        location: 'Cyber Punk Hotel', 
         name: 'Stewie', 
         imageUrl: 'images/Stewie_Griffin.png',
         coords: [], 
         isFound: false,
     }, 
     {
-        location: 'CyberPunk Hotel', 
+        location: 'Cyber Punk Hotel', 
         name: 'Peter', 
         imageUrl: 'images/Peter_Griffin.png',
         coords: [], 
         isFound: false,
     }, 
     {
-        location: 'CyberPunk Hotel', 
+        location: 'Cyber Punk Hotel', 
         name: 'Lois', 
         imageUrl: 'images/Lois_Griffin.png',
         coords: [], 
@@ -35,23 +35,23 @@ export const charactersSetup = [
 export const db = [
     {
         name: 'Stewie', 
-        x1: 3010,
-        x2: 3064,
+        x1: 3000,
+        x2: 3100,
         y1: 2870,
-        y2: 2940,
+        y2: 2970,
     }, 
     {
         name: 'Peter', 
-        x1: 2355,
-        x2: 2449,
-        y1: 5352,
-        y2: 5465,
+        x1: 2350,
+        x2: 2450,
+        y1: 5340,
+        y2: 5470,
     }, 
     {
         name: 'Lois', 
-        x1: 1037,
-        x2: 1152,
-        y1: 2858,
-        y2: 3019,
+        x1: 1030,
+        x2: 1130,
+        y1: 2850,
+        y2: 3000,
     }
 ]
