@@ -37,7 +37,7 @@ function ScoresLog({screenProps, setIsLoggingScore, setIsGameOver, timeScore, re
         <div className={styles.add_name}>
             <form onSubmit={onNameSubmit}>
                 <label htmlFor='name'> Add yourself first </label>
-                <input id='name' type='text' placeholder='Add nickname' onChange={onInputChange}></input>
+                <input id='name' type='text' placeholder='Add nickname' onChange={onInputChange} autoComplete='off'></input>
                 <button type='submit'>Go to results</button>
             </form>
         </div> : <div className={styles.records_container}>
