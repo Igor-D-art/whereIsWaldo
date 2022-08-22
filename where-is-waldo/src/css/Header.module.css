@@ -1,7 +1,7 @@
 .header{
     display: flex;
     position: fixed;
-    height: 6rem;
+    height: 90px;
     width: 100%;
     background-color: rgb(34, 34, 34);
     border-bottom: 1px solid black;
@@ -43,5 +43,4 @@ ul{
     display: flex;
     align-items: center;
     height: 5rem;
-    justify-content: space-between;
 }

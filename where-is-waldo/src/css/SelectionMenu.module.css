@@ -1,13 +1,14 @@
 .chars_list{
     display: block;
     flex-direction: column;
-    width: 7rem;
+    width: fit-content;
     height: fit-content;
     background-color: rgb(54, 54, 54);
     border: 1px solid black;
     border-radius: 10px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bolder;
+    opacity: 80%;
 }
 
 .chars{

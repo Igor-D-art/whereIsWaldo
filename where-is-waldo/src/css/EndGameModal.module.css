@@ -1,0 +1,50 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 15rem;
+    background-color: rgb(34, 34, 34);
+    border: 1px solid black;
+    border-radius: 15px;
+    align-items: center;
+}
+
+.btn_container{
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+}
+
+.p1, .p{
+    text-align: center;
+    font-weight: bold;
+    font-size: xx-large;
+    color: rgb(187, 255, 0);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+}
+
+.p1{
+    font-size: x-large;
+}
+
+button, button:active{
+    height: 2.5rem; 
+    width: 15rem;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    margin-top: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    font-weight: bold;
+}
+
+button:hover {
+    color: black;
+    background-color: rgb(187, 255, 0);
+}
+
+button:active{
+   color:rgb(54, 54, 54);
+   background-color: white;
+}

@@ -1,15 +1,17 @@
 .viewport{
     display: block;
     position: relative;
-    height: 90vh;
+    height: calc(100vh - 90px);
+    top: 90px;
     width: 100vw;
     overflow:hidden;
-    top: 10vh;
+    top: 90px;
 }
 
 .backround{
     opacity: 80%;
     width: 100%;
+    filter: brightness(30%);
 }
 
 .start_container{
@@ -87,7 +89,7 @@
 }
 
 .header2{
-    color: white;
+    color: rgb(187, 255, 0);
     font-size: 1.3rem;
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -96,7 +98,7 @@
 
 .header3{
     color: white;
-    font-weight: bold;
+    color: rgb(187, 255, 0);
     font-size: larger;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-bottom: 10px;

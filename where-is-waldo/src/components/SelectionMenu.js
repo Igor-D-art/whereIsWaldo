@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../css/SelectionMenu.module.css'
 
-function SelectionMenu({characters, selection, coords, assertion}) {
+function SelectionMenu({characters, setIsSelection, coords, setCurrentAssertion}) {
 
   const clickHandler = (charName)=>{
-    selection(false)
-    assertion({
-      x:coords[0],
-      y:coords[1],
+    const x = coords[0];
+    const y = coords[1];
+    const ratio = coords[2];
+    setIsSelection(false)
+    setCurrentAssertion({
+      x: x / ratio,
+      y: (y - 90) / ratio,
       name: charName,
     })
   }

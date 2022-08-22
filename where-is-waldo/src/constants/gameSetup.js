@@ -32,3 +32,26 @@ export const charactersSetup = [
     }
 ]
 
+export const db = [
+    {
+        name: 'Stewie', 
+        x1: 3010,
+        x2: 3064,
+        y1: 2870,
+        y2: 2940,
+    }, 
+    {
+        name: 'Peter', 
+        x1: 2355,
+        x2: 2449,
+        y1: 5352,
+        y2: 5465,
+    }, 
+    {
+        name: 'Lois', 
+        x1: 1037,
+        x2: 1152,
+        y1: 2858,
+        y2: 3019,
+    }
+]
