@@ -71,7 +71,15 @@ function GamePlay({location, characters, setTargetCharacters, setScreenProps, sc
       return true;
     }
   }
-   
+
+  /*
+    Pseudocode for Firebase checkAssertion:
+
+    - create a variable for the currentAssertion
+    - request firebase function to check 
+
+  */
+
   return (
     <div className={styles.gp_container}>
         <img onClick={clickHandler} className={styles.gp_image} src={location.imageUrl} alt=''/>

@@ -9,6 +9,11 @@ import EndGameModal from './components/EndGameModal.js';
 import ScoresLog from './components/ScoresLog';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+// import { getFunctions } from 'firebase/functions';
+
+// Initialize Firebase
+const firebaseApp = initializeApp(getFirebaseConfig());
+// const functions = getFunctions(firebaseApp);
 
 function App() {
 
@@ -117,9 +122,5 @@ function App() {
     </div>
   );
 }
-
-
-// Initialize Firebase
-const firebaseApp = initializeApp(getFirebaseConfig());
 
 export default App;
