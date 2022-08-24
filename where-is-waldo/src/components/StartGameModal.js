@@ -4,8 +4,6 @@ import downloadImage from '../utils/imageDownloader';
 
 function StartGameModal({locations, characters, selectLocation}) {
 
-  console.log(locations)
-
   return (
     <div className={styles.viewport}>
       {locations[0]? <img className={styles.backround} src={locations[0].imageUrl} alt=''/> : null}

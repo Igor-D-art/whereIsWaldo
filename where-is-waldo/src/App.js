@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import styles from './css/App.module.css';
 import { locationsSetup, charactersSetup } from './constants/gameSetup.js';
-import { getFirebaseConfig } from './firebase-config.js';
 import Header from './components/Header';
 import GamePlay from './components/GamePlay';
 import StartGameModal from './components/StartGameModal.js';
 import EndGameModal from './components/EndGameModal.js';
 import ScoresLog from './components/ScoresLog';
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// import { getFunctions } from 'firebase/functions';
-
-// Initialize Firebase
-const firebaseApp = initializeApp(getFirebaseConfig());
-// const functions = getFunctions(firebaseApp);
+import db from './Firebase';
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 function App() {
 
@@ -36,6 +30,11 @@ function App() {
   const [records, setRecords] = useState([]);
 
   useEffect(()=>{
+    getScores();
+  }, [])
+
+
+  useEffect(()=>{
     const initLocations = locationsSetup;
     const initCharacters = charactersSetup;
     setLocations(initLocations);
@@ -56,6 +55,16 @@ function App() {
     }
   }, [isGameOver])
 
+  async function getScores() {
+    const fetchedScores = [];
+    const q = query(collection(db, "scoreRecords"), where("name", "!=", ""));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      fetchedScores.push(doc.data());
+      setRecords(fetchedScores);
+    });
+  }
+
   const selectLocation = (e)=>{
     const targetLoc = locations[e.target.id];
     setTargetLocation(targetLoc);
@@ -68,7 +77,7 @@ function App() {
   }
 
   const sortRecords = ()=>{
-    const sortedRecords = [...records].sort(function(a, b) {
+      const sortedRecords = [...records].sort(function(a, b) {
         let minutesA = parseInt(a.score.minutesLapsed);
         let minutesB = parseInt(b.score.minutesLapsed);
         let secondsA = parseInt(a.score.secondsLapsed);
@@ -78,7 +87,6 @@ function App() {
         } else {
           return minutesA - minutesB;
         }
-        
     })
     return sortedRecords;
   }

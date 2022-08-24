@@ -19,7 +19,6 @@ function Header({characters, startTime, isGameOver, setTimeScore}) {
       if(startTime && startTime!==undefined){
         setTimeLapsed(calculateTime())
       }
-      
     }, 1000)
 
     return ()=> clearInterval(timerId)

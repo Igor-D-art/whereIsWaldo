@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../css/ScoresLog.module.css';
+import db from '../Firebase';
+import { collection, addDoc } from "firebase/firestore";
 
-function ScoresLog({screenProps, setIsLoggingScore, setIsGameOver, timeScore, records, setRecords, restartGame}) {
+function ScoresLog({screenProps, setIsLoggingScore, timeScore, records, setRecords, restartGame}) {
 
     const [addingRecord, setAddingRecord] = useState(false);
     const [name, setName] = useState('');
@@ -11,10 +13,19 @@ function ScoresLog({screenProps, setIsLoggingScore, setIsGameOver, timeScore, re
         restartGame();
     }
 
+    const addScoreToFirebase = async ({name, score})=>{
+        const recordRef = await addDoc(collection(db, "scoreRecords"), {
+            name: name,
+            score: score
+        });
+        console.log("Document written with ID: ", recordRef.id);
+    }
+
     const onNameSubmit = (event)=>{
         event.preventDefault();
         const newRecord = {name: name, score: timeScore};
         const newRecords = [...records, newRecord];
+        addScoreToFirebase(newRecord);
         setRecords(newRecords);
         setAddingRecord(true);
     }
@@ -42,8 +53,8 @@ function ScoresLog({screenProps, setIsLoggingScore, setIsGameOver, timeScore, re
             </form>
         </div> : <div className={styles.records_container}>
             <ul>
-             {records.map((record)=>{
-               return   <div className={styles.records}>
+             {records.map((record, index)=>{
+               return   <div key={index} className={styles.records}>
                             <p>{record.name}</p>
                             <p>{record.score.minutesLapsed} : {record.score.secondsLapsed}</p>
                         </div>
