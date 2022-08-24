@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from '../css/ScoresLog.module.css';
 import db from '../Firebase';
 import { collection, addDoc } from "firebase/firestore";
+import { isDisabled } from '@testing-library/user-event/dist/utils';
 
 function ScoresLog({screenProps, setIsLoggingScore, timeScore, records, setRecords, restartGame}) {
 
@@ -22,12 +23,16 @@ function ScoresLog({screenProps, setIsLoggingScore, timeScore, records, setRecor
     }
 
     const onNameSubmit = (event)=>{
-        event.preventDefault();
-        const newRecord = {name: name, score: timeScore};
-        const newRecords = [...records, newRecord];
-        addScoreToFirebase(newRecord);
-        setRecords(newRecords);
-        setAddingRecord(true);
+        if(name){
+            event.preventDefault();
+            const newRecord = {name: name, score: timeScore};
+            const newRecords = [...records, newRecord];
+            addScoreToFirebase(newRecord);
+            setRecords(newRecords);
+            setAddingRecord(true);
+        } else {
+            event.preventDefault();
+        }
     }
 
     const onInputChange = (event)=>{
@@ -48,8 +53,9 @@ function ScoresLog({screenProps, setIsLoggingScore, timeScore, records, setRecor
         <div className={styles.add_name}>
             <form onSubmit={onNameSubmit}>
                 <label htmlFor='name'> Add yourself first </label>
-                <input id='name' type='text' placeholder='Add nickname' onChange={onInputChange} autoComplete='off'></input>
-                <button type='submit'>Go to results</button>
+                <input id='name' type='text' placeholder='Add nickname' onChange={onInputChange} autoComplete='off' required></input>
+                <button disabled={!name} type='submit'>Go to scores</button>
+                
             </form>
         </div> : <div className={styles.records_container}>
             <ul>

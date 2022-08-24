@@ -56,6 +56,10 @@ form>input{
     padding: 0 15px 0 15px;
 }
 
+form>input:invalid{
+    background-color: rgb(255, 177, 177);
+}
+
 label{
     color: rgb(187, 255, 0);
     font-size: large;
@@ -96,7 +100,7 @@ button, button:active{
     font-weight: bold;
 }
 
-button:hover {
+button:hover{
     color: black;
     background-color: rgb(187, 255, 0);
 }
@@ -104,4 +108,8 @@ button:hover {
 button:active{
    color:rgb(54, 54, 54);
    background-color: white;
+}
+
+button:disabled{
+    pointer-events: none;
 }
