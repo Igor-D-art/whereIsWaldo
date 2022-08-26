@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../css/ScoresLog.module.css';
-import db from '../Firebase';
+import {db} from '../utils/Firebase';
 import { collection, addDoc } from "firebase/firestore";
-import { isDisabled } from '@testing-library/user-event/dist/utils';
 
 function ScoresLog({screenProps, setIsLoggingScore, timeScore, records, setRecords, restartGame}) {
 

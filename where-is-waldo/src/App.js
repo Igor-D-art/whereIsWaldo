@@ -6,7 +6,7 @@ import GamePlay from './components/GamePlay';
 import StartGameModal from './components/StartGameModal.js';
 import EndGameModal from './components/EndGameModal.js';
 import ScoresLog from './components/ScoresLog';
-import db from './Firebase';
+import {db} from './utils/Firebase';
 import { collection, query, where, getDocs } from "firebase/firestore";
 
 function App() {

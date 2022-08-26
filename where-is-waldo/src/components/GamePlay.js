@@ -4,9 +4,12 @@ import SuccessMsg from './SuccessMsg';
 import FailureMsg from './FailureMsg';
 import {db} from '../constants/gameSetup'
 import styles from "../css/GamePlay.module.css";
+import {functions} from "../utils/Firebase"
+import { httpsCallable } from "firebase/functions";
+
 
 function GamePlay({location, characters, setTargetCharacters, setScreenProps, screenProps}) {
-
+  
   const [isSelection, setIsSelection] = useState(false);
   const [menuCoords, setMenuCoords] = useState([]);
   const [currentAssertion, setCurrentAssertion] = useState('');
@@ -66,7 +69,13 @@ function GamePlay({location, characters, setTargetCharacters, setScreenProps, sc
     const assertionY = assertion.y;
     const targetX1 = target.x1;
     const targetX2 = target.x2;
-    
+
+    const helloWorld = httpsCallable(functions, 'sayHello');
+
+    helloWorld({name: 'Ihor'}).then((result)=>{
+      console.log(result.data)
+    })
+
     if((assertionX>=targetX1 && assertionX<=targetX2) && (assertionY>=target.y1 && assertionY<=target.y2) ){
       return true;
     }

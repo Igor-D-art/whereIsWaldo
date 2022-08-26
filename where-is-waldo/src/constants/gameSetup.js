@@ -1,4 +1,5 @@
 
+
 export const locationsSetup = [
     {
         name: 'Cyber Punk Hotel', 
