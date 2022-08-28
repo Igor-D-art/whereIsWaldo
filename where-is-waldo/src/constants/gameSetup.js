@@ -33,7 +33,7 @@ export const charactersSetup = [
     }
 ]
 
-export const db = [
+export const localDb = [
     {
         name: 'Stewie', 
         x1: 3000,

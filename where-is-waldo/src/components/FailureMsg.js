@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react'
 import styles from '../css/FailureMsg.module.css'
 
 function FailureMsg({screenProps}) {
-
-    console.log(screenProps)
-
   return (
     <div className={styles.onFailure}
         style={{

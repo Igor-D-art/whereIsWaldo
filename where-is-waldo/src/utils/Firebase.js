@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getFunctions } from 'firebase/functions';
+import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
+import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -22,3 +22,11 @@ const firebaseConfig = {
 export const fireBaseApp = initializeApp(firebaseConfig);
 export const db = getFirestore(fireBaseApp);
 export const functions = getFunctions(fireBaseApp, "europe-west1");
+
+
+// Switching to emulator for dev purposes when running on localhost
+if (window.location.hostname === "localhost") {
+  connectFunctionsEmulator(functions, "localhost", 5001);
+  connectFirestoreEmulator(db,  "localhost", 8080)
+}
+

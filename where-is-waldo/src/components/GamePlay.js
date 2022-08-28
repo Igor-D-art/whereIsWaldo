@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react';
 import SelectionMenu from './SelectionMenu';
 import SuccessMsg from './SuccessMsg';
 import FailureMsg from './FailureMsg';
-import {db} from '../constants/gameSetup'
+// import {localDb} from '../constants/gameSetup'
 import styles from "../css/GamePlay.module.css";
 import {functions} from "../utils/Firebase"
 import { httpsCallable } from "firebase/functions";
+import { db } from '../utils/Firebase';
+// import { collection, query, where, getDocs } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
 
 function GamePlay({location, characters, setTargetCharacters, setScreenProps, screenProps}) {
-  
+
   const [isSelection, setIsSelection] = useState(false);
   const [menuCoords, setMenuCoords] = useState([]);
   const [currentAssertion, setCurrentAssertion] = useState('');
@@ -17,16 +20,28 @@ function GamePlay({location, characters, setTargetCharacters, setScreenProps, sc
   const [isFailure, setIsFailure] = useState(false);
 
   useEffect(()=>{
-    if (currentAssertion){
-      if (checkAssertion(currentAssertion)){
+    checkAssertion(currentAssertion);
+  }, [currentAssertion]);
+  
+  async function checkAssertion(assertion) {
+    if (assertion){
+
+      const assertionStatus = httpsCallable(functions, 'checkAssertion');
+      const assertStatData = await assertionStatus({assertion});
+      const result = await assertStatData.data;
+      console.log(result);
+
+      if (result){
+        console.log(result)
         const newTargetChars = characters.filter((char)=>char.name !== currentAssertion.name);
         setTargetCharacters(newTargetChars);
         setIsSuccess(true);
       } else {
+        console.log(result);
         setIsFailure(true);
       };
-    }
-  }, [currentAssertion]);
+    };
+  }
 
   useEffect(()=>{
     const successTimout = setTimeout(()=>{
@@ -48,7 +63,6 @@ function GamePlay({location, characters, setTargetCharacters, setScreenProps, sc
     return ()=>clearTimeout(failureTimout);
   }, [isFailure])
   
-
   const clickHandler = (event)=>{
     const ratio = event.target.width / 3227;
     const pageX = event.pageX;
@@ -60,34 +74,6 @@ function GamePlay({location, characters, setTargetCharacters, setScreenProps, sc
                     screenHeight: screenH, })
     setIsSelection(true); 
   }
-
-  const checkAssertion = (currentAssertion)=>{
-    const assertion = currentAssertion;
-    const targetArr = db.filter((char)=> char.name === assertion.name);
-    const target = targetArr[0];
-    const assertionX = assertion.x;
-    const assertionY = assertion.y;
-    const targetX1 = target.x1;
-    const targetX2 = target.x2;
-
-    const helloWorld = httpsCallable(functions, 'sayHello');
-
-    helloWorld({name: 'Ihor'}).then((result)=>{
-      console.log(result.data)
-    })
-
-    if((assertionX>=targetX1 && assertionX<=targetX2) && (assertionY>=target.y1 && assertionY<=target.y2) ){
-      return true;
-    }
-  }
-
-  /*
-    Pseudocode for Firebase checkAssertion:
-
-    - create a variable for the currentAssertion
-    - request firebase function to check 
-
-  */
 
   return (
     <div className={styles.gp_container}>
